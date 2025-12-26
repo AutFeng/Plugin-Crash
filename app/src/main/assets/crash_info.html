@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>崩溃信息</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #F5F5F7;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: #FFFFFF;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            padding: 0 16px;
+        }
+
+        .header-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .error-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .error-icon {
+            width: 40px;
+            height: 40px;
+            background: #FF3B30;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 20px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .error-text {
+            flex: 1;
+        }
+
+        .error-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 2px;
+        }
+
+        .error-subtitle {
+            font-size: 14px;
+            color: #8E8E93;
+        }
+
+        .crash-info {
+            background: #F8F8F8;
+            padding: 12px;
+            font-size: 13px;
+            color: #8E8E93;
+            line-height: 1.6;
+            border-radius: 8px;
+            word-break: break-all;
+            white-space: pre-wrap;
+        }
+
+        .footer {
+            padding: 18px;
+        }
+
+        .btn {
+            height: 44px;
+            border-radius: 12px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s;
+        }
+
+        .btn:active {
+            opacity: 0.7;
+        }
+
+        .btn-primary {
+            background: #007AFF;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .btn-secondary {
+            background: #F0F0F0;
+            color: #000000;
+            flex: 1;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-title">崩溃信息</div>
+    </div>
+
+    <div class="content">
+        <div class="card">
+            <div class="error-header">
+                <div class="error-icon">⚠</div>
+                <div class="error-text">
+                    <div class="error-title">应用遇到问题已崩溃</div>
+                    <div class="error-subtitle">我们对此表示抱歉，您可以重新启动应用继续使用</div>
+                </div>
+            </div>
+            <div class="crash-info" tag="crash_info_text">崩溃信息加载中...</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button class="btn btn-primary" tag="restart_button" onclick="Android.restartApp()">重新启动应用</button>
+        <div class="btn-group">
+            <button class="btn btn-secondary" tag="copy_crash_info" onclick="Android.copyError()">复制错误</button>
+            <button class="btn btn-secondary" tag="share_crash_info" onclick="Android.shareError()">分享</button>
+        </div>
+    </div>
+</body>
+</html>
